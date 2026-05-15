@@ -3,66 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мария Золина - ПОРТФОЛИО</title>
+    <title>Мария Золина | Crisis Management & COO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
     <style>
         /* =========================================
-           БЛОК: БАЗОВЫЕ СТИЛИ (CSS)
+           БАЗОВЫЕ СТИЛИ И ПЕРЕМЕННЫЕ
            ========================================= */
         :root {
-            --bg-color: #ffffff;
-            --text-color: #000000;
-            --gray-color: #f4f4f4;
-            --border-color: #dddddd;
-            --font-main: 'Helvetica Neue', Arial, sans-serif;
+            --bg-main: #ffffff;
+            --bg-secondary: #f9f9f9;
+            --text-main: #111111;
+            --text-muted: #666666;
+            --accent-color: #000000;
+            --border-color: #e5e5e5;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            font-family: var(--font-main);
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.4;
-            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1140px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 0 20px;
         }
 
+        /* Заголовки */
         h1, h2, h3, h4 {
-            text-transform: uppercase;
             font-weight: 800;
-            margin-top: 0;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
         }
 
         h2 {
             font-size: 2.5rem;
-            margin-bottom: 30px;
-            border-bottom: 2px solid var(--text-color);
-            padding-bottom: 10px;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            filter: grayscale(100%); /* Ч/Б стиль как в PDF */
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-color);
         }
 
-        .cite {
-            font-size: 0.5em;
-            color: gray;
-            vertical-align: super;
+        /* Кнопки */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #ffffff;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            margin-top: 20px;
         }
 
-        /* Анимация для JS */
+        .btn:hover {
+            background-color: #333333;
+            transform: translateY(-2px);
+        }
+
+        /* Анимация появления */
         .fade-in {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .fade-in.visible {
@@ -71,95 +99,107 @@
         }
 
         /* =========================================
-           БЛОК: ГЛАВНЫЙ ЭКРАН / ОБО МНЕ
+           БЛОКИ СТРАНИЦЫ
            ========================================= */
+        
+        /* Hero Section */
         .hero {
             display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-bottom: 60px;
+            align-items: center;
+            gap: 60px;
+            min-height: 90vh;
+            padding: 80px 0;
         }
 
-        .hero-text {
+        .hero-content {
             flex: 1;
-            min-width: 300px;
         }
 
-        .hero-text h1 {
-            font-size: 3rem;
+        .hero-content h1 {
+            font-size: 3.5rem;
             margin-bottom: 10px;
         }
 
-        .hero-text h3 {
-            font-size: 1.2rem;
-            font-weight: normal;
-            color: #555;
-            margin-bottom: 30px;
-        }
-
-        .hero-text p {
+        .hero-roles {
             font-size: 1.1rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .hero-content p {
+            font-size: 1.125rem;
             margin-bottom: 20px;
+            color: #444;
         }
 
-        .hero-image {
+        .hero-image-wrapper {
             flex: 1;
-            min-width: 300px;
-            background: var(--gray-color);
-            min-height: 400px;
+            position: relative;
         }
 
-        /* =========================================
-           БЛОК: НАВЫКИ И ПОДХОД
-           ========================================= */
+        .hero-image-placeholder {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+        }
+
+        /* Skills Section */
         .skills-section {
-            margin-bottom: 60px;
+            padding: 80px 0;
+            background-color: var(--bg-secondary);
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
         }
 
-        .skill-item {
-            background: var(--gray-color);
-            padding: 20px;
+        .skill-card {
+            background: #ffffff;
+            padding: 40px 30px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
         }
 
-        .skill-item p {
-            margin: 0;
-            font-weight: bold;
+        .skill-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
         }
 
-        .skills-images {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 10px;
-            margin-top: 20px;
+        .skill-card p {
+            font-weight: 600;
+            font-size: 1.05rem;
         }
 
-        .skills-images div {
-            background: #ccc;
-            height: 250px; /* Плейсхолдер для фото */
-        }
-
-        /* =========================================
-           БЛОК: ПОРТФОЛИО
-           ========================================= */
+        /* Portfolio Section */
         .portfolio-section {
-            margin-bottom: 60px;
+            padding: 100px 0;
         }
 
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 40px;
         }
 
         .portfolio-item {
-            border: 1px solid var(--border-color);
-            padding: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover {
+            border-bottom-color: var(--accent-color);
+            padding-left: 10px;
         }
 
         .portfolio-item h4 {
@@ -167,193 +207,260 @@
             margin-bottom: 10px;
         }
 
-        /* =========================================
-           БЛОК: ФОРМАТЫ И ЦЕНЫ (ТАБЛИЦА)
-           ========================================= */
+        .portfolio-item p {
+            color: var(--text-muted);
+        }
+
+        /* Pricing Section */
         .pricing-section {
-            margin-bottom: 60px;
+            padding: 80px 0;
+            background-color: var(--bg-secondary);
+        }
+
+        .pricing-table-wrapper {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            overflow-x: auto;
         }
 
         .pricing-table {
             width: 100%;
             border-collapse: collapse;
+            text-align: left;
         }
 
         .pricing-table th, .pricing-table td {
-            text-align: left;
-            padding: 15px;
+            padding: 25px;
             border-bottom: 1px solid var(--border-color);
         }
 
         .pricing-table th {
-            font-size: 1.2rem;
+            background-color: #fafafa;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        .pricing-table tr {
+            transition: var(--transition);
+        }
+
+        .pricing-table tr:hover td {
+            background-color: #fcfcfc;
         }
 
         .pricing-table td {
             font-size: 1.1rem;
-            font-weight: bold;
+            font-weight: 600;
         }
 
-        /* =========================================
-           БЛОК: КОНТАКТЫ
-           ========================================= */
-        .contact-section {
+        /* Footer / Contacts */
+        .site-footer {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            padding: 80px 0;
+        }
+
+        .footer-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            background: #000;
-            color: #fff;
-            padding: 40px;
-            margin-bottom: 40px;
+            gap: 40px;
         }
 
-        .contact-info h2 {
+        .footer-content h2 {
             border-bottom: none;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer-content h2::after {
+            background-color: #ffffff;
         }
 
         .contact-info p {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+
+        .qr-placeholder {
+            width: 180px;
+            height: 180px;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
             font-weight: bold;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 20px;
         }
 
-        .qr-code {
-            width: 150px;
-            height: 150px;
-            background: #fff;
-            /* Сюда вставьте ваш реальный QR код */
+        /* =========================================
+           АДАПТИВНОСТЬ (Медиазапросы)
+           ========================================= */
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                padding: 60px 0;
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
 
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 2rem;
+            }
+            .pricing-table th, .pricing-table td {
+                padding: 15px;
+                font-size: 1rem;
+            }
+            .contact-info p {
+                font-size: 1.3rem;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
-
-        <section class="hero fade-in">
-            <div class="hero-text">
-                <h1>Мария Золина <span class="cite">[cite: 36]</span></h1>
-                <h3>Director <span class="cite">[cite: 1]</span> | COO <span class="cite">[cite: 14]</span> | Сооснователь СЕО <span class="cite">[cite: 27]</span></h3>
-                
-                <h2>ОБО МНЕ <span class="cite">[cite: 3]</span></h2>
-                <p>Меня называют "пожарным в бизнесе". Чаще ко мне обращаются, когда проект в ступоре, команда в растерянности, а цифры упорно не хотят становиться зелеными. Я не прихожу с готовыми шаблонами <span class="cite">[cite: 4]</span>.</p>
-                <p>Вникаю в контекст, слушаю, задаю неудобные вопросы и вместе с вами ищу ту самую точку приложения усилий, которая даст максимальную отдачу <span class="cite">[cite: 5]</span>.</p>
+    <main>
+        <section class="hero container fade-in">
+            <div class="hero-content">
+                <h1>Мария Золина</h1>
+                <div class="hero-roles">
+                    DIRECTOR &nbsp;&bull;&nbsp; COO &nbsp;&bull;&nbsp; СООСНОВАТЕЛЬ
+                </div>
+                <h2>Обо мне</h2>
+                <p>Меня называют "пожарным в бизнесе". Чаще ко мне обращаются, когда проект в ступоре, команда в растерянности, а цифры упорно не хотят становиться зелеными. Я не прихожу с готовыми шаблонами.</p>
+                <p>Вникаю в контекст, слушаю, задаю неудобные вопросы и вместе с вами ищу ту самую точку приложения усилий, которая даст максимальную отдачу.</p>
+                <a href="#contacts" class="btn">Обсудить проект</a>
             </div>
-            <div class="hero-image">
+            <div class="hero-image-wrapper fade-in">
+                <div class="hero-image-placeholder">
+                    [ Загрузите сюда фото ]<br>Рекомендуемый размер: 600x800px
                 </div>
-        </section>
-
-        <section class="skills-section fade-in">
-            <h2>НАВЫКИ И ПОДХОД <span class="cite">[cite: 10]</span></h2>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <p>Системный подход — регулира РБ. Производство и логистика — 10 000 ед/мес <span class="cite">[cite: 6]</span>.</p>
-                </div>
-                <div class="skill-item">
-                    <p>SKU и ассортимент — от матрицы до контента. Брендинги и продукт — как собрать не просто линейку, а образ <span class="cite">[cite: 7]</span>.</p>
-                </div>
-                <div class="skill-item">
-                    <p>Маркетплейсы и O2O — WB Ozon Lamoda <span class="cite">[cite: 8]</span>.</p>
-                </div>
-                <div class="skill-item">
-                    <p>Команды — от швей до дизайнеров, от юристов до финансистов <span class="cite">[cite: 9]</span>.</p>
-                </div>
-            </div>
-            
-            <div class="skills-images fade-in">
-                <div></div>
-                <div></div>
-                <div></div>
             </div>
         </section>
 
-        <section class="portfolio-section fade-in">
-            <h2>ПОРТФОЛИО <span class="cite">[cite: 11]</span></h2>
+        <section class="skills-section">
+            <div class="container fade-in">
+                <h2>Навыки и подход</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <p>Системный подход — регулярный менеджмент. Производство и логистика — 10 000 ед/мес.</p>
+                    </div>
+                    <div class="skill-card">
+                        <p>SKU и ассортимент — от матрицы до контента. Брендинги и продукт — как собрать не просто линейку, а образ.</p>
+                    </div>
+                    <div class="skill-card">
+                        <p>Маркетплейсы и O2O — Wildberries, Ozon, Lamoda.</p>
+                    </div>
+                    <div class="skill-card">
+                        <p>Команды — выстраивание работы от швей до дизайнеров, от юристов до финансистов.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="portfolio-section container fade-in">
+            <h2>Портфолио</h2>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
-                    <h4>WEME <span class="cite">[cite: 13, 21]</span> / LELU <span class="cite">[cite: 12]</span> / LELU KIDS <span class="cite">[cite: 24]</span></h4>
-                    <p>200- , фулфилмент, рост <span class="cite">[cite: 15, 33]</span></p>
+                    <h4>WEME / LELU / LELU KIDS</h4>
+                    <p>Организация производства, фулфилмент, обеспечение кратного роста.</p>
                 </div>
                 <div class="portfolio-item">
-                    <h4>MARUSHIK <span class="cite">[cite: 18, 19, 26]</span></h4>
-                    <p>Рост оборачиваемости «30%, запуск Premium сегмента <span class="cite">[cite: 25]</span></p>
+                    <h4>MARUSHIK</h4>
+                    <p>Рост оборачиваемости на 30%, успешный запуск Premium сегмента.</p>
                 </div>
                 <div class="portfolio-item">
-                    <h4>КРАСНАЯ ЗАРЯ <span class="cite">[cite: 29, 31, 32]</span></h4>
-                    <p>Экобренд международного уровня <span class="cite">[cite: 28]</span></p>
+                    <h4>КРАСНАЯ ЗАРЯ</h4>
+                    <p>Вывод экобренда на международный уровень.</p>
                 </div>
                 <div class="portfolio-item">
-                    <h4>SHIN <span class="cite">[cite: 16]</span> / AMUR <span class="cite">[cite: 22]</span> / BY MARU <span class="cite">[cite: 23]</span></h4>
-                    <p>Операционное управление, развитие брендов.</p>
+                    <h4>SHIN / AMUR / BY MARU</h4>
+                    <p>Операционное управление, построение системного развития брендов.</p>
                 </div>
             </div>
         </section>
 
-        <section class="pricing-section fade-in">
-            <h2>ФОРМАТЫ И ЦЕНЫ <span class="cite">[cite: 38, 39]</span></h2>
-            <table class="pricing-table">
-                <thead>
-                    <tr>
-                        <th>ФОРМАТ <span class="cite">[cite: 41]</span></th>
-                        <th>ВКЛЮЧАЕТ <span class="cite">[cite: 44]</span></th>
-                        <th>ЦЕНА <span class="cite">[cite: 47]</span></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>КОНСУЛЬТАЦИЯ <span class="cite">[cite: 42]</span></td>
-                        <td>АНАЛИЗ СОВЕТЫ <span class="cite">[cite: 45]</span></td>
-                        <td>O000/HAC <span class="cite">[cite: 48]</span></td>
-                    </tr>
-                    <tr>
-                        <td>АУДИТ <span class="cite">[cite: 43]</span></td>
-                        <td>ДИАГНОСТИКА <span class="cite">[cite: 46]</span></td>
-                        <td>от 0.000 <span class="cite">[cite: 49]</span></td>
-                    </tr>
-                    <tr>
-                        <td>ПЕРЕЗАПУСК <span class="cite">[cite: 50]</span></td>
-                        <td>Комплексная проработка</td>
-                        <td>OFW000P/MEC <span class="cite">[cite: 51]</span></td>
-                    </tr>
-                    <tr>
-                        <td>FLAL-OPOIEKT <span class="cite">[cite: 52]</span></td>
-                        <td>РЕАЛИЗАЦИЯ ОТ А ДО Я <span class="cite">[cite: 53]</span></td>
-                        <td>ДОГОВОРНАЯ <span class="cite">[cite: 54]</span></td>
-                    </tr>
-                </tbody>
-            </table>
+        <section class="pricing-section">
+            <div class="container fade-in">
+                <h2>Форматы и цены</h2>
+                <div class="pricing-table-wrapper">
+                    <table class="pricing-table">
+                        <thead>
+                            <tr>
+                                <th>ФОРМАТ</th>
+                                <th>ЧТО ВКЛЮЧАЕТ</th>
+                                <th>СТОИМОСТЬ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>КОНСУЛЬТАЦИЯ</td>
+                                <td>Анализ текущей ситуации, практические советы</td>
+                                <td>[ Укажите цену ] / ЧАС</td>
+                            </tr>
+                            <tr>
+                                <td>АУДИТ</td>
+                                <td>Глубокая диагностика бизнес-процессов</td>
+                                <td>от [ Укажите цену ]</td>
+                            </tr>
+                            <tr>
+                                <td>ПЕРЕЗАПУСК</td>
+                                <td>Комплексная проработка и реструктуризация</td>
+                                <td>от [ Укажите цену ] / МЕС</td>
+                            </tr>
+                            <tr>
+                                <td>FULL-ПРОЕКТ</td>
+                                <td>Реализация стратегии и управление "от А до Я"</td>
+                                <td>ДОГОВОРНАЯ</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </section>
+    </main>
 
-        <section class="contact-section fade-in">
+    <footer id="contacts" class="site-footer">
+        <div class="container footer-content fade-in">
             <div class="contact-info">
-                <h2>Связаться со мной <span class="cite">[cite: 37]</span></h2>
-                <p>МАРИЯ ЗОЛИНА <span class="cite">[cite: 55]</span></p>
-                <p>+79175530383 <span class="cite">[cite: 56]</span></p>
+                <h2>Связаться со мной</h2>
+                <p>МАРИЯ ЗОЛИНА</p>
+                <p>+7 (917) 553-03-83</p>
             </div>
             <div class="qr-code">
+                <div class="qr-placeholder">
+                    [ Загрузите сюда ваш QR-код ]
                 </div>
-        </section>
-
-    </div>
+            </div>
+        </div>
+    </footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const faders = document.querySelectorAll('.fade-in');
 
-            // Настройки Intersection Observer для плавной анимации при скролле
             const appearOptions = {
-                threshold: 0.1, // Элемент начнет появляться, когда 10% его области будет видно
+                threshold: 0.15,
                 rootMargin: "0px 0px -50px 0px"
             };
 
-            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            const appearOnScroll = new IntersectionObserver(function(entries, observer) {
                 entries.forEach(entry => {
-                    if (!entry.isIntersecting) {
-                        return;
-                    } else {
+                    if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        appearOnScroll.unobserve(entry.target);
+                        observer.unobserve(entry.target);
                     }
                 });
             }, appearOptions);
