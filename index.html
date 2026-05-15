@@ -19,7 +19,7 @@
             --text-muted: #666666;
             --accent-color: #000000;
             --border-color: #e5e5e5;
-            --transition: all 0.3s ease;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
@@ -111,15 +111,8 @@
             padding: 80px 0;
         }
 
-        .hero-content {
-            flex: 1;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-        }
-
+        .hero-content { flex: 1; }
+        .hero-content h1 { font-size: 3.5rem; margin-bottom: 10px; }
         .hero-roles {
             font-size: 1.1rem;
             color: var(--text-muted);
@@ -127,18 +120,8 @@
             margin-bottom: 40px;
             letter-spacing: 1px;
         }
-
-        .hero-content p {
-            font-size: 1.125rem;
-            margin-bottom: 20px;
-            color: #444;
-        }
-
-        .hero-image-wrapper {
-            flex: 1;
-            position: relative;
-        }
-
+        .hero-content p { font-size: 1.125rem; margin-bottom: 20px; color: #444; }
+        .hero-image-wrapper { flex: 1; position: relative; }
         .hero-image-placeholder {
             width: 100%;
             aspect-ratio: 3/4;
@@ -148,6 +131,8 @@
             align-items: center;
             justify-content: center;
             color: var(--text-muted);
+            text-align: center;
+            padding: 20px;
         }
 
         /* Skills Section */
@@ -175,40 +160,87 @@
             border-color: var(--accent-color);
         }
 
-        .skill-card p {
-            font-weight: 600;
-            font-size: 1.05rem;
-        }
+        .skill-card p { font-weight: 600; font-size: 1.05rem; }
 
-        /* Portfolio Section */
-        .portfolio-section {
-            padding: 100px 0;
-        }
-
+        /* =========================================
+           БЛОК: ПОРТФОЛИО (РАСКРЫВАЮЩИЕСЯ КАРТОЧКИ)
+           ========================================= */
+        .portfolio-section { padding: 100px 0; }
+        
         .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         .portfolio-item {
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 25px 30px;
+            cursor: pointer;
             transition: var(--transition);
+            overflow: hidden;
         }
 
         .portfolio-item:hover {
-            border-bottom-color: var(--accent-color);
-            padding-left: 10px;
+            border-color: #999;
         }
 
-        .portfolio-item h4 {
+        .portfolio-item.active {
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .portfolio-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .portfolio-header h4 {
             font-size: 1.5rem;
-            margin-bottom: 10px;
+            margin: 0;
         }
 
-        .portfolio-item p {
+        .portfolio-brief {
             color: var(--text-muted);
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* Иконка плюса/крестика */
+        .toggle-icon {
+            font-size: 2rem;
+            font-weight: 300;
+            line-height: 1;
+            transition: transform 0.4s ease;
+            color: var(--text-muted);
+        }
+
+        .portfolio-item.active .toggle-icon {
+            transform: rotate(45deg);
+            color: var(--accent-color);
+        }
+
+        /* Скрытый контент */
+        .portfolio-details {
+            max-height: 0;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .portfolio-item.active .portfolio-details {
+            max-height: 500px; /* Достаточно большое значение для контента */
+            opacity: 1;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .portfolio-details ul {
+            margin-left: 20px;
+            margin-top: 10px;
+            color: #444;
         }
 
         /* Pricing Section */
@@ -241,18 +273,9 @@
             letter-spacing: 1px;
         }
 
-        .pricing-table tr {
-            transition: var(--transition);
-        }
-
-        .pricing-table tr:hover td {
-            background-color: #fcfcfc;
-        }
-
-        .pricing-table td {
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
+        .pricing-table tr { transition: var(--transition); }
+        .pricing-table tr:hover td { background-color: #fcfcfc; }
+        .pricing-table td { font-size: 1.1rem; font-weight: 600; }
 
         /* Footer / Contacts */
         .site-footer {
@@ -269,21 +292,10 @@
             gap: 40px;
         }
 
-        .footer-content h2 {
-            border-bottom: none;
-            margin-bottom: 20px;
-        }
-
-        .footer-content h2::after {
-            background-color: #ffffff;
-        }
-
-        .contact-info p {
-            font-size: 1.8rem;
-            font-weight: 300;
-            margin-bottom: 10px;
-        }
-
+        .footer-content h2 { border-bottom: none; margin-bottom: 20px; }
+        .footer-content h2::after { background-color: #ffffff; }
+        .contact-info p { font-size: 1.8rem; font-weight: 300; margin-bottom: 10px; }
+        
         .qr-placeholder {
             width: 180px;
             height: 180px;
@@ -298,34 +310,20 @@
             padding: 20px;
         }
 
-        /* =========================================
-           АДАПТИВНОСТЬ (Медиазапросы)
-           ========================================= */
+        /* Адаптивность */
         @media (max-width: 900px) {
-            .hero {
-                flex-direction: column;
-                padding: 60px 0;
-            }
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
-            .footer-content {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+            .hero { flex-direction: column; padding: 60px 0; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .footer-content { flex-direction: column; align-items: flex-start; }
+            .portfolio-header { flex-direction: column; align-items: flex-start; gap: 10px; position: relative; }
+            .toggle-icon { position: absolute; right: 0; top: 0; }
         }
 
         @media (max-width: 600px) {
-            h2 {
-                font-size: 2rem;
-            }
-            .pricing-table th, .pricing-table td {
-                padding: 15px;
-                font-size: 1rem;
-            }
-            .contact-info p {
-                font-size: 1.3rem;
-            }
+            h2 { font-size: 2rem; }
+            .pricing-table th, .pricing-table td { padding: 15px; font-size: 1rem; }
+            .contact-info p { font-size: 1.3rem; }
+            .portfolio-item { padding: 20px; }
         }
     </style>
 </head>
@@ -373,22 +371,61 @@
         <section class="portfolio-section container fade-in">
             <h2>Портфолио</h2>
             <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <h4>WEME / LELU / LELU KIDS</h4>
-                    <p>Организация производства, фулфилмент, обеспечение кратного роста.</p>
+                
+                <div class="portfolio-item" onclick="togglePortfolioCard(this)">
+                    <div class="portfolio-header">
+                        <h4>WEME / LELU / LELU KIDS</h4>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="portfolio-brief">Организация производства, фулфилмент, обеспечение кратного роста.</div>
+                    <div class="portfolio-details">
+                        <p><strong>Задачи и реализация:</strong> Здесь вы можете подробно описать, с какими трудностями пришел клиент, и какие конкретно шаги были предприняты для настройки производства и логистики.</p>
+                        <ul>
+                            <li>Масштабирование производственных мощностей;</li>
+                            <li>Оптимизация цепочек поставок;</li>
+                            <li>Внедрение системы контроля качества.</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="portfolio-item">
-                    <h4>MARUSHIK</h4>
-                    <p>Рост оборачиваемости на 30%, успешный запуск Premium сегмента.</p>
+
+                <div class="portfolio-item" onclick="togglePortfolioCard(this)">
+                    <div class="portfolio-header">
+                        <h4>MARUSHIK</h4>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="portfolio-brief">Рост оборачиваемости на 30%, успешный запуск Premium сегмента.</div>
+                    <div class="portfolio-details">
+                        <p><strong>Результаты проекта:</strong> Описание стратегии выхода в Premium сегмент. Как менялось позиционирование, ценообразование и работа с аудиторией.</p>
+                        <ul>
+                            <li>Анализ целевой аудитории и конкурентов;</li>
+                            <li>Разработка новой визуальной концепции;</li>
+                            <li>Ускорение цикла оборачиваемости товаров.</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="portfolio-item">
-                    <h4>КРАСНАЯ ЗАРЯ</h4>
-                    <p>Вывод экобренда на международный уровень.</p>
+
+                <div class="portfolio-item" onclick="togglePortfolioCard(this)">
+                    <div class="portfolio-header">
+                        <h4>КРАСНАЯ ЗАРЯ</h4>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="portfolio-brief">Вывод экобренда на международный уровень.</div>
+                    <div class="portfolio-details">
+                        <p><strong>Ключевые этапы:</strong> Рассказ о процессе сертификации, выходе на зарубежные маркетплейсы или поиске оптовых партнеров за рубежом.</p>
+                    </div>
                 </div>
-                <div class="portfolio-item">
-                    <h4>SHIN / AMUR / BY MARU</h4>
-                    <p>Операционное управление, построение системного развития брендов.</p>
+
+                <div class="portfolio-item" onclick="togglePortfolioCard(this)">
+                    <div class="portfolio-header">
+                        <h4>SHIN / AMUR / BY MARU</h4>
+                        <div class="toggle-icon">+</div>
+                    </div>
+                    <div class="portfolio-brief">Операционное управление, построение системного развития брендов.</div>
+                    <div class="portfolio-details">
+                        <p><strong>Специфика работы:</strong> Как выстраивались операционные процессы сразу для нескольких брендов. Формирование команд, распределение бюджетов и планирование.</p>
+                    </div>
                 </div>
+
             </div>
         </section>
 
@@ -408,17 +445,17 @@
                             <tr>
                                 <td>КОНСУЛЬТАЦИЯ</td>
                                 <td>Анализ текущей ситуации, практические советы</td>
-                                <td>[ Укажите цену ] / ЧАС</td>
+                                <td>[ Цена ] / ЧАС</td>
                             </tr>
                             <tr>
                                 <td>АУДИТ</td>
                                 <td>Глубокая диагностика бизнес-процессов</td>
-                                <td>от [ Укажите цену ]</td>
+                                <td>от [ Цена ]</td>
                             </tr>
                             <tr>
                                 <td>ПЕРЕЗАПУСК</td>
                                 <td>Комплексная проработка и реструктуризация</td>
-                                <td>от [ Укажите цену ] / МЕС</td>
+                                <td>от [ Цена ] / МЕС</td>
                             </tr>
                             <tr>
                                 <td>FULL-ПРОЕКТ</td>
@@ -448,6 +485,20 @@
     </footer>
 
     <script>
+        // Функция для раскрытия/закрытия карточек портфолио
+        function togglePortfolioCard(element) {
+            // Если нужно, чтобы при открытии одной карточки закрывались другие - раскомментируйте код ниже:
+            /*
+            document.querySelectorAll('.portfolio-item').forEach(item => {
+                if (item !== element) {
+                    item.classList.remove('active');
+                }
+            });
+            */
+            element.classList.toggle('active');
+        }
+
+        // Анимация при скролле
         document.addEventListener("DOMContentLoaded", () => {
             const faders = document.querySelectorAll('.fade-in');
 
