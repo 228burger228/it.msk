@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мария Золина - ПОРТФОЛИО</title>
+    <style>
+        /* =========================================
+           БЛОК: БАЗОВЫЕ СТИЛИ (CSS)
+           ========================================= */
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --gray-color: #f4f4f4;
+            --border-color: #dddddd;
+            --font-main: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1, h2, h3, h4 {
+            text-transform: uppercase;
+            font-weight: 800;
+            margin-top: 0;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--text-color);
+            padding-bottom: 10px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(100%); /* Ч/Б стиль как в PDF */
+        }
+
+        .cite {
+            font-size: 0.5em;
+            color: gray;
+            vertical-align: super;
+        }
+
+        /* Анимация для JS */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           БЛОК: ГЛАВНЫЙ ЭКРАН / ОБО МНЕ
+           ========================================= */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h3 {
+            font-size: 1.2rem;
+            font-weight: normal;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            background: var(--gray-color);
+            min-height: 400px;
+        }
+
+        /* =========================================
+           БЛОК: НАВЫКИ И ПОДХОД
+           ========================================= */
+        .skills-section {
+            margin-bottom: 60px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-item {
+            background: var(--gray-color);
+            padding: 20px;
+        }
+
+        .skill-item p {
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .skills-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skills-images div {
+            background: #ccc;
+            height: 250px; /* Плейсхолдер для фото */
+        }
+
+        /* =========================================
+           БЛОК: ПОРТФОЛИО
+           ========================================= */
+        .portfolio-section {
+            margin-bottom: 60px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            border: 1px solid var(--border-color);
+            padding: 20px;
+        }
+
+        .portfolio-item h4 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* =========================================
+           БЛОК: ФОРМАТЫ И ЦЕНЫ (ТАБЛИЦА)
+           ========================================= */
+        .pricing-section {
+            margin-bottom: 60px;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .pricing-table th, .pricing-table td {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .pricing-table th {
+            font-size: 1.2rem;
+        }
+
+        .pricing-table td {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        /* =========================================
+           БЛОК: КОНТАКТЫ
+           ========================================= */
+        .contact-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            background: #000;
+            color: #fff;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .contact-info h2 {
+            border-bottom: none;
+            margin-bottom: 10px;
+        }
+
+        .contact-info p {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .qr-code {
+            width: 150px;
+            height: 150px;
+            background: #fff;
+            /* Сюда вставьте ваш реальный QR код */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <section class="hero fade-in">
+            <div class="hero-text">
+                <h1>Мария Золина <span class="cite">[cite: 36]</span></h1>
+                <h3>Director <span class="cite">[cite: 1]</span> | COO <span class="cite">[cite: 14]</span> | Сооснователь СЕО <span class="cite">[cite: 27]</span></h3>
+                
+                <h2>ОБО МНЕ <span class="cite">[cite: 3]</span></h2>
+                <p>Меня называют "пожарным в бизнесе". Чаще ко мне обращаются, когда проект в ступоре, команда в растерянности, а цифры упорно не хотят становиться зелеными. Я не прихожу с готовыми шаблонами <span class="cite">[cite: 4]</span>.</p>
+                <p>Вникаю в контекст, слушаю, задаю неудобные вопросы и вместе с вами ищу ту самую точку приложения усилий, которая даст максимальную отдачу <span class="cite">[cite: 5]</span>.</p>
+            </div>
+            <div class="hero-image">
+                </div>
+        </section>
+
+        <section class="skills-section fade-in">
+            <h2>НАВЫКИ И ПОДХОД <span class="cite">[cite: 10]</span></h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <p>Системный подход — регулира РБ. Производство и логистика — 10 000 ед/мес <span class="cite">[cite: 6]</span>.</p>
+                </div>
+                <div class="skill-item">
+                    <p>SKU и ассортимент — от матрицы до контента. Брендинги и продукт — как собрать не просто линейку, а образ <span class="cite">[cite: 7]</span>.</p>
+                </div>
+                <div class="skill-item">
+                    <p>Маркетплейсы и O2O — WB Ozon Lamoda <span class="cite">[cite: 8]</span>.</p>
+                </div>
+                <div class="skill-item">
+                    <p>Команды — от швей до дизайнеров, от юристов до финансистов <span class="cite">[cite: 9]</span>.</p>
+                </div>
+            </div>
+            
+            <div class="skills-images fade-in">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </section>
+
+        <section class="portfolio-section fade-in">
+            <h2>ПОРТФОЛИО <span class="cite">[cite: 11]</span></h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <h4>WEME <span class="cite">[cite: 13, 21]</span> / LELU <span class="cite">[cite: 12]</span> / LELU KIDS <span class="cite">[cite: 24]</span></h4>
+                    <p>200- , фулфилмент, рост <span class="cite">[cite: 15, 33]</span></p>
+                </div>
+                <div class="portfolio-item">
+                    <h4>MARUSHIK <span class="cite">[cite: 18, 19, 26]</span></h4>
+                    <p>Рост оборачиваемости «30%, запуск Premium сегмента <span class="cite">[cite: 25]</span></p>
+                </div>
+                <div class="portfolio-item">
+                    <h4>КРАСНАЯ ЗАРЯ <span class="cite">[cite: 29, 31, 32]</span></h4>
+                    <p>Экобренд международного уровня <span class="cite">[cite: 28]</span></p>
+                </div>
+                <div class="portfolio-item">
+                    <h4>SHIN <span class="cite">[cite: 16]</span> / AMUR <span class="cite">[cite: 22]</span> / BY MARU <span class="cite">[cite: 23]</span></h4>
+                    <p>Операционное управление, развитие брендов.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="pricing-section fade-in">
+            <h2>ФОРМАТЫ И ЦЕНЫ <span class="cite">[cite: 38, 39]</span></h2>
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>ФОРМАТ <span class="cite">[cite: 41]</span></th>
+                        <th>ВКЛЮЧАЕТ <span class="cite">[cite: 44]</span></th>
+                        <th>ЦЕНА <span class="cite">[cite: 47]</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>КОНСУЛЬТАЦИЯ <span class="cite">[cite: 42]</span></td>
+                        <td>АНАЛИЗ СОВЕТЫ <span class="cite">[cite: 45]</span></td>
+                        <td>O000/HAC <span class="cite">[cite: 48]</span></td>
+                    </tr>
+                    <tr>
+                        <td>АУДИТ <span class="cite">[cite: 43]</span></td>
+                        <td>ДИАГНОСТИКА <span class="cite">[cite: 46]</span></td>
+                        <td>от 0.000 <span class="cite">[cite: 49]</span></td>
+                    </tr>
+                    <tr>
+                        <td>ПЕРЕЗАПУСК <span class="cite">[cite: 50]</span></td>
+                        <td>Комплексная проработка</td>
+                        <td>OFW000P/MEC <span class="cite">[cite: 51]</span></td>
+                    </tr>
+                    <tr>
+                        <td>FLAL-OPOIEKT <span class="cite">[cite: 52]</span></td>
+                        <td>РЕАЛИЗАЦИЯ ОТ А ДО Я <span class="cite">[cite: 53]</span></td>
+                        <td>ДОГОВОРНАЯ <span class="cite">[cite: 54]</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="contact-section fade-in">
+            <div class="contact-info">
+                <h2>Связаться со мной <span class="cite">[cite: 37]</span></h2>
+                <p>МАРИЯ ЗОЛИНА <span class="cite">[cite: 55]</span></p>
+                <p>+79175530383 <span class="cite">[cite: 56]</span></p>
+            </div>
+            <div class="qr-code">
+                </div>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const faders = document.querySelectorAll('.fade-in');
+
+            // Настройки Intersection Observer для плавной анимации при скролле
+            const appearOptions = {
+                threshold: 0.1, // Элемент начнет появляться, когда 10% его области будет видно
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('visible');
+                        appearOnScroll.unobserve(entry.target);
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
+</body>
+</html>
